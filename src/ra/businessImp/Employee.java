@@ -4,7 +4,7 @@ import ra.business.IEmployee;
 
 import java.util.Scanner;
 
-public class Employee implements IEmployee {
+public class Employee implements IEmployee, Comparable<Employee>{
     private String id;
     private String name;
     private int year; //nam sinh nhan vien
@@ -101,11 +101,16 @@ public class Employee implements IEmployee {
     @Override
     public void displayData() {
         System.out.printf("Mã nhân viên: %s - Tên nhân viên: %s - Năm sinh nhân viên: %d\n", this.id, this.name, this.year);
-        System.out.printf("Hệ số lương nhân viên: %f - Hoa hồng hàng tháng: %f -  Trạng thái nhân viên %b\n", this.rate, this.commmission, this.status ? "Dang làm việc" : "Nghỉ việc");
+        System.out.printf("Hệ số lương nhân viên: %.2f - Hoa hồng hàng tháng: %.2f - Lương nhân viên hàng tháng: %.2f - Trạng thái nhân viên: %s\n", this.rate, this.commmission, this.salary, this.status ? "Dang làm việc" : "Nghỉ việc");
         System.out.println("------------------------------------");
 
     }
-    public float calSalary(){
-        return salary = rate * BASIC_SALARY + commmission;
+    public void calSalary(){
+        salary = rate * BASIC_SALARY + commmission;
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return 0;
     }
 }
